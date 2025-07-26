@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.enums.PaymentMethodStatus;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.enums.PaymentStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -22,7 +24,7 @@ import java.time.LocalDateTime;
 public class InsurancePaymentEntity extends PanacheEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "policy_id", nullable = false)
+    @JoinColumn(name = "policy_number", nullable = false)
     private PolicyEntity policy;
 
     @Column(nullable = false)
@@ -37,7 +39,7 @@ public class InsurancePaymentEntity extends PanacheEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private PaymentMethodStatus  methodStatus;
+    private PaymentMethodStatus methodStatus;
 
     private String transactionReference;
 

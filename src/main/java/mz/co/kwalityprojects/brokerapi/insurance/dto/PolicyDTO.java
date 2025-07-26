@@ -1,6 +1,6 @@
 package mz.co.kwalityprojects.brokerapi.insurance.dto;
 
-import mz.co.kwalityprojects.brokerapi.insurance.entity.PolicyStatus;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.enums.PolicyStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

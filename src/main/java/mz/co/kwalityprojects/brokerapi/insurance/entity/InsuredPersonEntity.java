@@ -24,19 +24,13 @@ import java.util.List;
 @Entity
 public  class InsuredPersonEntity extends PanacheEntity {
     public String name;
-
     public String fullName;
-
     public String nationalId;
-
     public String gender;
-
     public LocalDate birthDate;
-
     public String phoneNumber;
-
+    public String altPhoneNumber;
     public String email;
-
     public String address;
 
     @OneToMany(mappedBy = "insuredPerson")
