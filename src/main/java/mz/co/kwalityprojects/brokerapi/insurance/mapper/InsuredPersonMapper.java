@@ -2,16 +2,13 @@ package mz.co.kwalityprojects.brokerapi.insurance.mapper;
 
 
 import mz.co.kwalityprojects.brokerapi.insurance.dto.InsuredPersonDTO;
-import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPersonEntity;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPerson;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "cdi")
 public interface InsuredPersonMapper {
 
-    InsuredPersonMapper INSTANCE = Mappers.getMapper(InsuredPersonMapper.class);
+    InsuredPersonDTO toDTO(InsuredPerson entity);
 
-    InsuredPersonDTO toDTO(InsuredPersonEntity entity);
-
-    InsuredPersonEntity toEntity(InsuredPersonDTO dto);
+    InsuredPerson toEntity(InsuredPersonDTO dto);
 }

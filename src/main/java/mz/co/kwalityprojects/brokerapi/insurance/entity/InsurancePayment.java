@@ -1,14 +1,12 @@
 package mz.co.kwalityprojects.brokerapi.insurance.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.base.CustomerPanacheBase;
 import mz.co.kwalityprojects.brokerapi.insurance.entity.enums.PaymentMethodStatus;
 import mz.co.kwalityprojects.brokerapi.insurance.entity.enums.PaymentStatus;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -21,11 +19,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class InsurancePaymentEntity extends PanacheEntity {
+public class InsurancePayment extends CustomerPanacheBase {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "policy_number", nullable = false)
-    private PolicyEntity policy;
+    private Policy policy;
 
     @Column(nullable = false)
     private String currency;
@@ -42,11 +40,5 @@ public class InsurancePaymentEntity extends PanacheEntity {
     private PaymentMethodStatus methodStatus;
 
     private String transactionReference;
-
-    @CreationTimestamp
-    public LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    public LocalDateTime updatedAt;
 
 }

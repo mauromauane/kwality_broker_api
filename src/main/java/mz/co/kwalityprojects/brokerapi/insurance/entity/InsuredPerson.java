@@ -1,16 +1,13 @@
 package mz.co.kwalityprojects.brokerapi.insurance.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.base.CustomerPanacheBase;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -22,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public  class InsuredPersonEntity extends PanacheEntity {
+public  class InsuredPerson extends CustomerPanacheBase {
     public String name;
     public String fullName;
     public String nationalId;
@@ -34,11 +31,5 @@ public  class InsuredPersonEntity extends PanacheEntity {
     public String address;
 
     @OneToMany(mappedBy = "insuredPerson")
-    private List<PolicyEntity> apolices = new ArrayList<>();
-
-    @CreationTimestamp
-    public LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    public LocalDateTime updatedAt;
+    private List<Policy> apolices = new ArrayList<>();
 }

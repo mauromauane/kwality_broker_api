@@ -2,7 +2,7 @@ package mz.co.kwalityprojects.brokerapi.insurance.repository;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPersonEntity;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPerson;
 
 /**
  * @author Nélio Muchisse
@@ -10,9 +10,9 @@ import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPersonEntity;
  */
 
 @ApplicationScoped
-public class InsuredRepository implements PanacheRepository<InsuredPersonEntity> {
+public class InsuredRepository implements PanacheRepository<InsuredPerson> {
 
-    public InsuredPersonEntity findInsuredByPolicyNumber(String policyNumber) {
+    public InsuredPerson findInsuredByPolicyNumber(String policyNumber) {
         return find("SELECT p.insuredPerson FROM PolicyEntity p WHERE p.policyNumber = ?1", policyNumber)
                 .firstResult();
     }

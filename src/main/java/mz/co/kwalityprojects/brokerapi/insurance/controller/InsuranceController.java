@@ -1,6 +1,6 @@
 package mz.co.kwalityprojects.brokerapi.insurance.controller;
 
-import com.google.inject.Inject;
+import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

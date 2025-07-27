@@ -1,25 +1,18 @@
 package mz.co.kwalityprojects.brokerapi.insurance.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDateTime;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.base.CustomerPanacheBase;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UserDetails extends PanacheEntity {
-    @CreationTimestamp
-    public LocalDateTime createdDate;
-    @CreationTimestamp
-    public LocalDateTime lastUpdate;
+public class UserDetails extends CustomerPanacheBase {
     @Column(length = 50)
     private String email;
     @Column(length = 50)

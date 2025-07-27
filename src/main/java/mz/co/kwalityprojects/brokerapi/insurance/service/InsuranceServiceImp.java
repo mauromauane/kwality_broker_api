@@ -1,9 +1,9 @@
 package mz.co.kwalityprojects.brokerapi.insurance.service;
 
-import com.google.inject.Inject;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import mz.co.kwalityprojects.brokerapi.insurance.dto.InsuredPersonDTO;
-import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPersonEntity;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPerson;
 import mz.co.kwalityprojects.brokerapi.insurance.mapper.InsuredPersonMapper;
 import mz.co.kwalityprojects.brokerapi.insurance.repository.InsuredRepository;
 import org.slf4j.Logger;
@@ -22,12 +22,17 @@ public class InsuranceServiceImp implements InsuranceService {
     @Inject
     InsuredRepository insuredRepository;
 
-    @Inject
-    InsuredPersonMapper mapper;
+   // @Inject
+  //  InsuredPersonMapper mapper;
 
     @Override
     public InsuredPersonDTO findInsuredPersonByPolicyNumber(String policyNumber) {
-        InsuredPersonEntity InsuredPersonEntity = insuredRepository.findInsuredByPolicyNumber(policyNumber);
-        return mapper.toDTO(InsuredPersonEntity);
+        InsuredPerson InsuredPerson = insuredRepository.findInsuredByPolicyNumber(policyNumber);
+        return null; //mapper.toDTO(InsuredPerson);
+    }
+
+    @Override
+    public InsuredPersonDTO findPolicyByPolicyNumber(String policyNumber) {
+        return null;
     }
 }

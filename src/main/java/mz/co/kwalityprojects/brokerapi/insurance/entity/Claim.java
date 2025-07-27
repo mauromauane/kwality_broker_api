@@ -1,12 +1,12 @@
 package mz.co.kwalityprojects.brokerapi.insurance.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import mz.co.kwalityprojects.brokerapi.insurance.entity.base.CustomerPanacheBase;
 import mz.co.kwalityprojects.brokerapi.insurance.entity.enums.ClaimStatus;
 
 import java.math.BigDecimal;
@@ -16,10 +16,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Claim extends PanacheEntity {
+public class Claim extends CustomerPanacheBase {
 
     @OneToOne
-    private PolicyEntity policyEntity;
+    private Policy policy;
     private ClaimStatus status;
     private Date createdDate;
     private String description;
