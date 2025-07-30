@@ -19,11 +19,13 @@ import java.time.LocalDateTime;
 public abstract class CustomerPanacheBase extends PanacheEntityBase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
-    public String name;   @CreationTimestamp
-    public LocalDateTime createdAt;
+    private String name;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    public LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;
 }

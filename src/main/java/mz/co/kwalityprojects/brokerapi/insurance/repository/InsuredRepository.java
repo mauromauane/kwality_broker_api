@@ -13,7 +13,7 @@ import mz.co.kwalityprojects.brokerapi.insurance.entity.InsuredPerson;
 public class InsuredRepository implements PanacheRepository<InsuredPerson> {
 
     public InsuredPerson findInsuredByPolicyNumber(String policyNumber) {
-        return find("SELECT p.insuredPerson FROM PolicyEntity p WHERE p.policyNumber = ?1", policyNumber)
+        return find("SELECT p FROM Policy p JOIN FETCH p.insuredPerson WHERE p.policyNumber = ?1", policyNumber)
                 .firstResult();
     }
 

@@ -2,9 +2,7 @@ package mz.co.kwalityprojects.brokerapi.insurance.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import mz.co.kwalityprojects.brokerapi.insurance.entity.base.CustomerPanacheBase;
 
 import java.time.LocalDate;
@@ -15,21 +13,23 @@ import java.util.List;
  * July 2025
  */
 
+@EqualsAndHashCode(callSuper = false)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Entity
 public  class InsuredPerson extends CustomerPanacheBase {
-    public String name;
-    public String fullName;
-    public String nationalId;
-    public String gender;
-    public LocalDate birthDate;
-    public String phoneNumber;
-    public String altPhoneNumber;
-    public String email;
-    public String address;
+    private String fullName;
+    private String nationalId;
+    private String gender;
+    private LocalDate birthDate;
+    private String phoneNumber;
+    private String altPhoneNumber;
+    private String email;
+    private String address;
 
+    @Builder.Default
     @OneToMany(mappedBy = "insuredPerson")
     private List<Policy> apolices = new ArrayList<>();
 }

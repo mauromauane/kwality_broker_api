@@ -4,6 +4,8 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import mz.co.kwalityprojects.brokerapi.insurance.entity.Policy;
 
+import java.util.Optional;
+
 /**
  * @author Nélio Muchisse
  * July 2025
@@ -12,9 +14,10 @@ import mz.co.kwalityprojects.brokerapi.insurance.entity.Policy;
 @ApplicationScoped
 public class PolicyRepository implements PanacheRepository<Policy> {
 
-    public Policy findPoliceByPolicyNumber(String policyNumber) {
-        return find("SELECT p FROM PolicyEntity p WHERE p.policyNumber = ?1", policyNumber)
-                .firstResult();
+    public Optional<Policy> findPoliceByPolicyNumberAndPhoneNumber(String policyNumber, String phoneNumber) {
+        return find(" SELECT p FROM Policy p JOIN FETCH p.insuredPerson ip " +
+                " WHERE p.policyNumber = ?1  AND ip.phoneNumber = ?2 ", policyNumber,phoneNumber)
+                .firstResultOptional();
     }
 
 }

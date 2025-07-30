@@ -17,6 +17,7 @@ public class Users extends CustomerPanacheBase {
     @Column(length = 25)
     private String userId;
     private String roleId;
+    @Builder.Default
     private String status = UserStatus.ACTIVE.toString();
     private String userKey;
   
